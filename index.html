@@ -1,0 +1,1221 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Skincare Clinic - Advanced Care</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    :root {
+      --color-cream: #F9F7FC;
+      /* very light lavender background */
+      --color-sand: #E9DFFC;
+      /* soft lilac surface */
+      --color-clay: #9C27B0;
+      /* vibrant purple accent */
+      --color-maroon: #4A0E4E;
+      /* deep plum text/cta */
+    }
+
+    /* Global defaults to enforce palette */
+    html,
+    body {
+      background: var(--color-cream);
+      color: var(--color-maroon);
+    }
+
+    /* Ensure selection stays within palette */
+    ::selection {
+      background: var(--color-clay);
+      color: var(--color-cream);
+    }
+
+    /* Utility helpers for palette (optional shortcuts) */
+    .bg-cream {
+      background-color: var(--color-cream) !important;
+    }
+
+    .bg-sand {
+      background-color: var(--color-sand) !important;
+    }
+
+    .bg-clay {
+      background-color: var(--color-clay) !important;
+    }
+
+    .bg-maroon {
+      background-color: var(--color-maroon) !important;
+    }
+
+    .text-cream {
+      color: var(--color-cream) !important;
+    }
+
+    .text-sand {
+      color: var(--color-sand) !important;
+    }
+
+    .text-clay {
+      color: var(--color-clay) !important;
+    }
+
+    .text-maroon {
+      color: var(--color-maroon) !important;
+    }
+
+    .border-cream {
+      border-color: var(--color-cream) !important;
+    }
+
+    .border-sand {
+      border-color: var(--color-sand) !important;
+    }
+
+    .border-clay {
+      border-color: var(--color-clay) !important;
+    }
+
+    .border-maroon {
+      border-color: var(--color-maroon) !important;
+    }
+
+    /* Reveal-on-scroll base state */
+    .reveal {
+      opacity: 0;
+      transform: translateY(8px);
+      transition: opacity 500ms ease, transform 500ms ease;
+    }
+
+    .reveal.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Hide default anchor focus outline so we can use ring color from palette */
+    a:focus {
+      outline: none;
+    }
+
+    /* Scroll-margin so anchors don't get hidden under sticky header */
+    section {
+      scroll-margin-top: 88px;
+    }
+  </style>
+</head>
+
+<body class="font-sans antialiased">
+  <header class="sticky top-0 z-50 bg-cream/95 backdrop-blur border-b border-clay">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="flex items-center justify-between h-16">
+        <a href="#hero" class="inline-flex items-center gap-2 group" aria-label="Go to hero">
+          <img src="./images/logo.png" alt="Skincare Clinic Logo" class="h-10 sm:w-[20vw] w-[72vw] rounded-full object-cover">
+        </a>
+
+
+        <nav class="hidden md:flex items-center gap-6" aria-label="Primary">
+          <a href="#hero"
+            class="py-2 text-maroon hover:text-clay focus-visible:ring-2 ring-offset-2 ring-offset-[var(--color-cream)] ring-[var(--color-clay)] rounded">Home</a>
+          <a href="#about"
+            class="py-2 text-maroon hover:text-clay focus-visible:ring-2 ring-offset-2 ring-offset-[var(--color-cream)] ring-[var(--color-clay)] rounded">About</a>
+          <a href="#services"
+            class="py-2 text-maroon hover:text-clay focus-visible:ring-2 ring-offset-2 ring-offset-[var(--color-cream)] ring-[var(--color-clay)] rounded">Services</a>
+          <a href="#why-us"
+            class="py-2 text-maroon hover:text-clay focus-visible:ring-2 ring-offset-2 ring-offset-[var(--color-cream)] ring-[var(--color-clay)] rounded">Why
+            Choose Us</a>
+          <a href="#contact"
+            class="py-2 text-maroon hover:text-clay focus-visible:ring-2 ring-offset-2 ring-offset-[var(--color-cream)] ring-[var(--color-clay)] rounded">Contact</a>
+          <a href="#map"
+            class="py-2 text-maroon hover:text-clay focus-visible:ring-2 ring-offset-2 ring-offset-[var(--color-cream)] ring-[var(--color-clay)] rounded">Map</a>
+        </nav>
+
+        <div class="hidden md:block">
+          <a href="#contact"
+            class="inline-flex items-center px-4 py-2 rounded-md bg-maroon text-cream hover:bg-clay transition-colors focus-visible:ring-2 ring-offset-2 ring-offset-[var(--color-cream)] ring-[var(--color-clay)]">
+            Book Consultation
+          </a>
+        </div>
+
+        <button id="mobileMenuBtn"
+          class="md:hidden inline-flex items-center justify-center h-10 w-10 rounded-md border border-clay text-maroon focus-visible:ring-2 ring-[var(--color-clay)]"
+          aria-controls="mobileMenu" aria-expanded="false" aria-label="Toggle menu">
+          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <nav id="mobileMenu" class="md:hidden hidden border-t border-clay bg-cream" aria-label="Mobile">
+      <div class="px-4 py-3 flex flex-col gap-2">
+        <a href="#hero" class="px-3 py-2 rounded hover:bg-sand focus-visible:ring-2 ring-[var(--color-clay)]">Home</a>
+        <a href="#about" class="px-3 py-2 rounded hover:bg-sand focus-visible:ring-2 ring-[var(--color-clay)]">About</a>
+        <a href="#services"
+          class="px-3 py-2 rounded hover:bg-sand focus-visible:ring-2 ring-[var(--color-clay)]">Services</a>
+        <a href="#why-us" class="px-3 py-2 rounded hover:bg-sand focus-visible:ring-2 ring-[var(--color-clay)]">Why
+          Choose Us</a>
+        <a href="#contact"
+          class="px-3 py-2 rounded hover:bg-sand focus-visible:ring-2 ring-[var(--color-clay)]">Contact</a>
+        <a href="#map" class="px-3 py-2 rounded hover:bg-sand focus-visible:ring-2 ring-[var(--color-clay)]">Map</a>
+        <a href="#contact"
+          class="mt-1 inline-flex items-center justify-center px-4 py-2 rounded-md bg-maroon text-cream hover:bg-clay transition-colors">Book
+          Consultation</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section id="hero" class="bg-sand">
+      <div class="max-w-6xl mx-auto px-4 py-16 md:py-24 flex flex-col-reverse md:flex-row items-center gap-10">
+        <div class="w-full md:w-1/2 reveal">
+          <h1 class="text-3xl md:text-5xl font-bold leading-tight text-balance">
+            Advanced Skin Care for Acne, Hair Removal, and More
+          </h1>
+          <p class="mt-4 text-base md:text-lg leading-relaxed text-pretty">
+            Personalized treatments for acne, laser hair removal, hair fall, warts and moles removal, skin lightening,
+            and double chin reduction.
+          </p>
+          <div class="mt-6 flex flex-col sm:flex-row gap-3">
+            <a href="#services"
+              class="inline-flex items-center justify-center px-5 py-3 rounded-md bg-maroon text-cream hover:bg-clay transition-colors focus-visible:ring-2 ring-offset-2 ring-offset-[var(--color-sand)] ring-[var(--color-clay)]">
+              Explore Services
+            </a>
+            <a href="#contact"
+              class="inline-flex items-center justify-center px-5 py-3 rounded-md border border-clay text-maroon hover:bg-cream transition-colors focus-visible:ring-2 ring-offset-2 ring-offset-[var(--color-sand)] ring-[var(--color-clay)]">
+              Book a Consultation
+            </a>
+          </div>
+        </div>
+        <div class="w-full md:w-1/2 reveal">
+          <img src="https://i.pinimg.com/736x/12/fe/08/12fe08ea31c0c51c46c2cde4f7a26868.jpg"
+            alt="Professional skin care consultation" class="w-full h-auto rounded-lg border border-clay" />
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="bg-cream">
+      <div class="max-w-6xl mx-auto px-4 py-16 md:py-20">
+        <div class="grid md:grid-cols-2 gap-10 items-center">
+          <div class="reveal">
+            <img src="/images/owner.jpg" alt="Dermatologist examining patient's skin"
+              class="w-full h-auto rounded-lg border border-clay" />
+          </div>
+          <div class="reveal">
+            <h2 class="text-2xl md:text-3xl font-bold">About Our Clinic</h2>
+            <p class="mt-3 leading-relaxed">
+              We combine medical expertise with modern technology to deliver safe and effective skin treatments. Our
+              approach is personalized—every skin is unique, and your plan should be too.
+            </p>
+            <ul class="mt-4 grid sm:grid-cols-2 gap-3">
+              <li class="flex items-start gap-3">
+                <span class="inline-flex mt-1 h-6 w-6 items-center justify-center rounded-full bg-clay text-cream">
+                  <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d="M20 7L9 18l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                      stroke-linejoin="round" />
+                  </svg>
+                </span>
+                <div>
+                  <p class="font-medium">Certified Dermatologists</p>
+                  <p class="text-sm leading-relaxed">Experienced, compassionate specialists.</p>
+                </div>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="inline-flex mt-1 h-6 w-6 items-center justify-center rounded-full bg-maroon text-cream">
+                  <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d="M20 7L9 18l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                      stroke-linejoin="round" />
+                  </svg>
+                </span>
+                <div>
+                  <p class="font-medium">Modern Equipment</p>
+                  <p class="text-sm leading-relaxed">Safe, efficient, and precise treatments.</p>
+                </div>
+              </li>
+              <li class="flex items-start gap-3">
+                <span
+                  class="inline-flex mt-1 h-6 w-6 items-center justify-center rounded-full bg-sand text-maroon border border-clay">
+                  <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d="M20 7L9 18l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                      stroke-linejoin="round" />
+                  </svg>
+                </span>
+                <div>
+                  <p class="font-medium">Personalized Plans</p>
+                  <p class="text-sm leading-relaxed">Tailored to your goals and skin type.</p>
+                </div>
+              </li>
+              <li class="flex items-start gap-3">
+                <span
+                  class="inline-flex mt-1 h-6 w-6 items-center justify-center rounded-full bg-cream text-maroon border border-clay">
+                  <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d="M20 7L9 18l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                      stroke-linejoin="round" />
+                  </svg>
+                </span>
+                <div>
+                  <p class="font-medium">Transparent Pricing</p>
+                  <p class="text-sm leading-relaxed">No hidden fees—clear guidance upfront.</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="services" class="bg-sand">
+      <div class="max-w-6xl mx-auto px-4 py-16 md:py-20">
+        <div class="reveal text-center">
+          <h2 class="text-2xl md:text-3xl font-bold">Our Services</h2>
+          <p class="mt-2 leading-relaxed">Comprehensive solutions designed for healthy, confident skin.</p>
+        </div>
+
+        <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+
+          <!-- 1. Acne -->
+          <article class="relative group overflow-hidden rounded-lg shadow-lg">
+            <img src="images/service1.jpg" alt="Acne Treatment"
+              class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500" />
+            <div
+              class="absolute inset-0 bg-maroon bg-opacity-80 flex flex-col justify-center items-center text-center text-cream px-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+              <h3 class="text-xl font-semibold">Acne Scan</h3>
+              <p class="mt-2 text-sm">Digital analysis and targeted treatment plans to reduce acne and prevent scarring.
+              </p>
+              <button data-modal="modal-acne"
+                class="mt-4 px-4 py-2 rounded-md bg-cream text-maroon hover:bg-clay hover:text-cream">Learn
+                More</button>
+            </div>
+            <div class="absolute bottom-0 left-0 w-full bg-cream bg-opacity-90 text-maroon px-4 py-2">
+              <h3 class="text-lg font-semibold">Acne Scan</h3>
+            </div>
+          </article>
+
+          <!-- 2. Laser Hair Removal -->
+          <article class="relative group overflow-hidden rounded-lg shadow-lg">
+            <img src="images/service2.jpg" alt="Laser Hair Removal"
+              class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500" />
+            <div
+              class="absolute inset-0 bg-maroon bg-opacity-80 flex flex-col justify-center items-center text-center text-cream px-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+              <h3 class="text-xl font-semibold">Laser Hair Removal</h3>
+              <p class="mt-2 text-sm">Long-term hair reduction for smooth skin using safe laser technology.</p>
+              <button data-modal="modal-laser"
+                class="mt-4 px-4 py-2 rounded-md bg-cream text-maroon hover:bg-clay hover:text-cream">Learn
+                More</button>
+            </div>
+            <div class="absolute bottom-0 left-0 w-full bg-cream bg-opacity-90 text-maroon px-4 py-2">
+              <h3 class="text-lg font-semibold">Laser Hair Removal</h3>
+            </div>
+          </article>
+
+          <!-- 3. Hair Fall -->
+          <article class="relative group overflow-hidden rounded-lg shadow-lg">
+            <img src="images/service5.jpg" alt="Hair Fall Treatment"
+              class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500" />
+            <div
+              class="absolute inset-0 bg-maroon bg-opacity-80 flex flex-col justify-center items-center text-center text-cream px-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+              <h3 class="text-xl font-semibold">Hair Fall</h3>
+              <p class="mt-2 text-sm">Scalp diagnosis and therapies to reduce hair loss and improve growth.</p>
+              <button data-modal="modal-hair"
+                class="mt-4 px-4 py-2 rounded-md bg-cream text-maroon hover:bg-clay hover:text-cream">Learn
+                More</button>
+            </div>
+            <div class="absolute bottom-0 left-0 w-full bg-cream bg-opacity-90 text-maroon px-4 py-2">
+              <h3 class="text-lg font-semibold">Hair Fall</h3>
+            </div>
+          </article>
+
+          <!-- 4. Warts & Moles -->
+          <article class="relative group overflow-hidden rounded-lg shadow-lg">
+            <img src="images/service6.jpg" alt="Warts & Moles Removal"
+              class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500" />
+            <div
+              class="absolute inset-0 bg-maroon bg-opacity-80 flex flex-col justify-center items-center text-center text-cream px-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+              <h3 class="text-xl font-semibold">Warts & Moles Removal</h3>
+              <p class="mt-2 text-sm">Safe removal with minimal scarring and quick recovery.</p>
+              <button data-modal="modal-warts"
+                class="mt-4 px-4 py-2 rounded-md bg-cream text-maroon hover:bg-clay hover:text-cream">Learn
+                More</button>
+            </div>
+            <div class="absolute bottom-0 left-0 w-full bg-cream bg-opacity-90 text-maroon px-4 py-2">
+              <h3 class="text-lg font-semibold">Warts & Moles Removal</h3>
+            </div>
+          </article>
+
+          <!-- 5. Skin Lightening -->
+          <article class="relative group overflow-hidden rounded-lg shadow-lg">
+            <img src="images/service9.jpg" alt="Skin Lightening"
+              class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500" />
+            <div
+              class="absolute inset-0 bg-maroon bg-opacity-80 flex flex-col justify-center items-center text-center text-cream px-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+              <h3 class="text-xl font-semibold">Skin Lightening</h3>
+              <p class="mt-2 text-sm">Brightening treatments for even tone and radiant skin.</p>
+              <button data-modal="modal-lightening"
+                class="mt-4 px-4 py-2 rounded-md bg-cream text-maroon hover:bg-clay hover:text-cream">Learn
+                More</button>
+            </div>
+            <div class="absolute bottom-0 left-0 w-full bg-cream bg-opacity-90 text-maroon px-4 py-2">
+              <h3 class="text-lg font-semibold">Skin Lightening</h3>
+            </div>
+          </article>
+
+          <!-- 6. Double Chin -->
+          <article class="relative group overflow-hidden rounded-lg shadow-lg">
+            <img src="images/service10.jpg" alt="Double Chin Treatment"
+              class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500" />
+            <div
+              class="absolute inset-0 bg-maroon bg-opacity-80 flex flex-col justify-center items-center text-center text-cream px-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+              <h3 class="text-xl font-semibold">Double Chin Treatments</h3>
+              <p class="mt-2 text-sm">Non-surgical options to reduce submental fullness and contour the jawline.</p>
+              <button data-modal="modal-chin"
+                class="mt-4 px-4 py-2 rounded-md bg-cream text-maroon hover:bg-clay hover:text-cream">Learn
+                More</button>
+            </div>
+            <div class="absolute bottom-0 left-0 w-full bg-cream bg-opacity-90 text-maroon px-4 py-2">
+              <h3 class="text-lg font-semibold">Double Chin Treatments</h3>
+            </div>
+          </article>
+
+          <!-- 7. Thread Lifts -->
+          <article class="relative group overflow-hidden rounded-lg shadow-lg">
+            <img src="images/service3.jpg" alt="Thread Lifts"
+              class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500" />
+            <div
+              class="absolute inset-0 bg-maroon bg-opacity-80 flex flex-col justify-center items-center text-center text-cream px-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+              <h3 class="text-xl font-semibold">Thread Lifts</h3>
+              <p class="mt-2 text-sm">Minimally invasive lift for sagging skin with long-lasting results.</p>
+              <button data-modal="modal-thread"
+                class="mt-4 px-4 py-2 rounded-md bg-cream text-maroon hover:bg-clay hover:text-cream">Learn
+                More</button>
+            </div>
+            <div class="absolute bottom-0 left-0 w-full bg-cream bg-opacity-90 text-maroon px-4 py-2">
+              <h3 class="text-lg font-semibold">Thread Lifts</h3>
+            </div>
+          </article>
+
+          <!-- 8. Anti Aging -->
+          <article class="relative group overflow-hidden rounded-lg shadow-lg">
+            <img src="images/service4.jpg" alt="Anti Aging Treatment"
+              class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500" />
+            <div
+              class="absolute inset-0 bg-maroon bg-opacity-80 flex flex-col justify-center items-center text-center text-cream px-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+              <h3 class="text-xl font-semibold">Anti Aging Treatment</h3>
+              <p class="mt-2 text-sm">Collagen-boosting therapies to reduce wrinkles and restore youthful skin.</p>
+              <button data-modal="modal-antiaging"
+                class="mt-4 px-4 py-2 rounded-md bg-cream text-maroon hover:bg-clay hover:text-cream">Learn
+                More</button>
+            </div>
+            <div class="absolute bottom-0 left-0 w-full bg-cream bg-opacity-90 text-maroon px-4 py-2">
+              <h3 class="text-lg font-semibold">Anti Aging Treatment</h3>
+            </div>
+          </article>
+
+          <!-- 9. Pigmentation & Tattoo Removal -->
+          <article class="relative group overflow-hidden rounded-lg shadow-lg">
+            <img src="images/service7.jpg" alt="Pigmentation & Tattoo Removal"
+              class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500" />
+            <div
+              class="absolute inset-0 bg-maroon bg-opacity-80 flex flex-col justify-center items-center text-center text-cream px-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+              <h3 class="text-xl font-semibold">Pigmentation & Tattoo Removal</h3>
+              <p class="mt-2 text-sm">Advanced laser treatments for clear, even-toned skin.</p>
+              <button data-modal="modal-pigmentation"
+                class="mt-4 px-4 py-2 rounded-md bg-cream text-maroon hover:bg-clay hover:text-cream">Learn
+                More</button>
+            </div>
+            <div class="absolute bottom-0 left-0 w-full bg-cream bg-opacity-90 text-maroon px-4 py-2">
+              <h3 class="text-lg font-semibold">Pigmentation & Tattoo Removal</h3>
+            </div>
+          </article>
+
+          <!-- 10. Cosmetic Fillers -->
+          <article class="relative group overflow-hidden rounded-lg shadow-lg">
+            <img src="images/service8.jpg" alt="Cosmetic Fillers"
+              class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500" />
+            <div
+              class="absolute inset-0 bg-maroon bg-opacity-80 flex flex-col justify-center items-center text-center text-cream px-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+              <h3 class="text-xl font-semibold">Cosmetic Fillers</h3>
+              <p class="mt-2 text-sm">Restore lost volume and smooth deep wrinkles with dermal fillers.</p>
+              <button data-modal="modal-fillers"
+                class="mt-4 px-4 py-2 rounded-md bg-cream text-maroon hover:bg-clay hover:text-cream">Learn
+                More</button>
+            </div>
+            <div class="absolute bottom-0 left-0 w-full bg-cream bg-opacity-90 text-maroon px-4 py-2">
+              <h3 class="text-lg font-semibold">Cosmetic Fillers</h3>
+            </div>
+          </article>
+
+          <!-- 11. Stretch Marks -->
+          <article class="relative group overflow-hidden rounded-lg shadow-lg">
+            <img src="images/service11.jpg" alt="Stretch Marks Treatment"
+              class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500" />
+            <div
+              class="absolute inset-0 bg-maroon bg-opacity-80 flex flex-col justify-center items-center text-center text-cream px-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+              <h3 class="text-xl font-semibold">Stretch Marks Treatment</h3>
+              <p class="mt-2 text-sm">Effective therapies to fade stretch marks and improve skin texture.</p>
+              <button data-modal="modal-stretch"
+                class="mt-4 px-4 py-2 rounded-md bg-cream text-maroon hover:bg-clay hover:text-cream">Learn
+                More</button>
+            </div>
+            <div class="absolute bottom-0 left-0 w-full bg-cream bg-opacity-90 text-maroon px-4 py-2">
+              <h3 class="text-lg font-semibold">Stretch Marks Treatment</h3>
+            </div>
+          </article>
+
+          <!-- 12. Earlobe Repair -->
+          <article class="relative group overflow-hidden rounded-lg shadow-lg">
+            <img src="images/service12.jpg" alt="Earlobe Repair"
+              class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500" />
+            <div
+              class="absolute inset-0 bg-maroon bg-opacity-80 flex flex-col justify-center items-center text-center text-cream px-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+              <h3 class="text-xl font-semibold">Earlobe Repair</h3>
+              <p class="mt-2 text-sm">Quick and effective repair for torn or stretched earlobes.</p>
+              <button data-modal="modal-earlobe"
+                class="mt-4 px-4 py-2 rounded-md bg-cream text-maroon hover:bg-clay hover:text-cream">Learn
+                More</button>
+            </div>
+            <div class="absolute bottom-0 left-0 w-full bg-cream bg-opacity-90 text-maroon px-4 py-2">
+              <h3 class="text-lg font-semibold">Earlobe Repair</h3>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+
+
+    <section id="why-us" class="bg-cream">
+      <div class="max-w-6xl mx-auto px-4 py-16 md:py-20">
+        <div class="reveal text-center">
+          <h2 class="text-2xl md:text-3xl font-bold">Why Choose Us</h2>
+          <p class="mt-2 leading-relaxed">We focus on safety, results, and long-term skin health.</p>
+        </div>
+
+        <div class="mt-10 grid md:grid-cols-2 gap-6">
+
+          <!-- 1. Evidence-Based Treatments -->
+          <div
+            class="reveal flex items-start gap-4 rounded-xl border border-clay bg-sand p-6 shadow-md hover:shadow-lg transition-shadow duration-300">
+            <div class="p-3 rounded-full bg-maroon text-cream">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M9 12l2 2 4-4m5 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </div>
+            <div>
+              <h3 class="font-semibold text-lg">Evidence-Based Treatments</h3>
+              <p class="mt-2 text-sm leading-relaxed">Our protocols are grounded in dermatological research and clinical
+                results.</p>
+            </div>
+          </div>
+
+          <!-- 2. Experienced Team -->
+          <div
+            class="reveal flex items-start gap-4 rounded-xl border border-clay bg-cream p-6 shadow-md hover:shadow-lg transition-shadow duration-300">
+            <div class="p-3 rounded-full bg-maroon text-cream">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M5.121 17.804A10 10 0 1119.07 3.929a10 10 0 01-13.95 13.875z" />
+              </svg>
+            </div>
+            <div>
+              <h3 class="font-semibold text-lg">Experienced Team</h3>
+              <p class="mt-2 text-sm leading-relaxed">Board-certified specialists with years of hands-on experience.</p>
+            </div>
+          </div>
+
+          <!-- 3. Comfort & Privacy -->
+          <div
+            class="reveal flex items-start gap-4 rounded-xl border border-clay bg-cream p-6 shadow-md hover:shadow-lg transition-shadow duration-300">
+            <div class="p-3 rounded-full bg-maroon text-cream">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M12 11c0 1.104-.896 2-2 2s-2-.896-2-2 .896-2 2-2 2 .896 2 2zm10 10H2V5c0-1.104.896-2 2-2h16c1.104 0 2 .896 2 2v16z" />
+              </svg>
+            </div>
+            <div>
+              <h3 class="font-semibold text-lg">Comfort & Privacy</h3>
+              <p class="mt-2 text-sm leading-relaxed">Thoughtful care in a calm, private environment for every patient.
+              </p>
+            </div>
+          </div>
+
+          <!-- 4. Clear Care Plans -->
+          <div
+            class="reveal flex items-start gap-4 rounded-xl border border-clay bg-sand p-6 shadow-md hover:shadow-lg transition-shadow duration-300">
+            <div class="p-3 rounded-full bg-maroon text-cream">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M9 12h6m-3-3v6m8 5a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </div>
+            <div>
+              <h3 class="font-semibold text-lg">Clear Care Plans</h3>
+              <p class="mt-2 text-sm leading-relaxed">Transparent steps, realistic timelines, and post-treatment
+                guidance.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <section id="contact" class="bg-sand">
+      <div class="max-w-6xl mx-auto px-4 py-16 md:py-20">
+        <div class="max-w-2xl">
+          <div class="reveal">
+            <h2 class="text-2xl md:text-3xl font-bold">Contact Us</h2>
+            <p class="mt-2 leading-relaxed">Have questions or want to book a consultation? Send us a message.</p>
+          </div>
+        </div>
+
+        <form id="contactForm" class="reveal mt-8 grid gap-4 max-w-2xl" novalidate>
+          <div class="grid sm:grid-cols-2 gap-4">
+            <div>
+              <label for="name" class="block text-sm font-medium">Full Name</label>
+              <input id="name" name="name" type="text" required
+                class="mt-1 w-full rounded-md border border-clay bg-cream px-3 py-2 text-maroon placeholder-[var(--color-clay)] focus-visible:ring-2 ring-[var(--color-clay)]"
+                placeholder="Enter your name" />
+              <p class="mt-1 text-sm text-clay hidden" data-error-for="name">Please enter your name.</p>
+            </div>
+            <div>
+              <label for="phone" class="block text-sm font-medium">Phone</label>
+              <input id="phone" name="phone" type="tel" required
+                class="mt-1 w-full rounded-md border border-clay bg-cream px-3 py-2 text-maroon placeholder-[var(--color-clay)] focus-visible:ring-2 ring-[var(--color-clay)]"
+                placeholder="e.g. +91 98765 43210" />
+              <p class="mt-1 text-sm text-clay hidden" data-error-for="phone">Please enter a valid phone.</p>
+            </div>
+          </div>
+
+          <div>
+            <label for="email" class="block text-sm font-medium">Email (optional)</label>
+            <input id="email" name="email" type="email"
+              class="mt-1 w-full rounded-md border border-clay bg-cream px-3 py-2 text-maroon placeholder-[var(--color-clay)] focus-visible:ring-2 ring-[var(--color-clay)]"
+              placeholder="you@example.com" />
+            <p class="mt-1 text-sm text-clay hidden" data-error-for="email">Please enter a valid email.</p>
+          </div>
+
+          <div>
+            <label for="service" class="block text-sm font-medium">Service</label>
+            <select id="service" name="service" required
+              class="mt-1 w-full rounded-md border border-clay bg-cream px-3 py-2 text-maroon focus-visible:ring-2 ring-[var(--color-clay)]">
+              <option value="">Choose a service</option>
+              <option>Acne Scan</option>
+              <option>Laser Hair Removal</option>
+              <option>Hair Fall</option>
+              <option>Warts & Moles Removal</option>
+              <option>Skin Lightening</option>
+              <option>Double Chin Treatments</option>
+            </select>
+            <p class="mt-1 text-sm text-clay hidden" data-error-for="service">Please select a service.</p>
+          </div>
+
+          <div>
+            <label for="message" class="block text-sm font-medium">Message</label>
+            <textarea id="message" name="message" rows="5" required
+              class="mt-1 w-full rounded-md border border-clay bg-cream px-3 py-2 text-maroon placeholder-[var(--color-clay)] focus-visible:ring-2 ring-[var(--color-clay)]"
+              placeholder="Tell us about your skin goals..."></textarea>
+            <p class="mt-1 text-sm text-clay hidden" data-error-for="message">Please enter a message.</p>
+          </div>
+
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-2">
+              <input id="consent" name="consent" type="checkbox" required
+                class="h-4 w-4 rounded border-clay text-maroon focus-visible:ring-2 ring-[var(--color-clay)]" />
+              <label for="consent" class="text-sm">I agree to be contacted by the clinic.</label>
+            </div>
+            <button type="submit"
+              class="inline-flex items-center px-5 py-2.5 rounded-md bg-maroon text-cream hover:bg-clay transition-colors focus-visible:ring-2 ring-offset-2 ring-offset-[var(--color-sand)] ring-[var(--color-clay)]">
+              Send Message
+            </button>
+          </div>
+
+          <div id="formSuccess" class="hidden mt-4 rounded-md border border-clay bg-cream p-4">
+            <p class="font-medium">Thank you! We’ll get back to you shortly.</p>
+          </div>
+        </form>
+      </div>
+    </section>
+
+ <section id="map" class="bg-cream relative overflow-hidden">
+  <!-- Decorative elements -->
+  <div class="absolute top-0 left-0 w-full h-12 bg-maroon/5"></div>
+  <div class="absolute -top-4 -right-4 h-24 w-24 rounded-full bg-maroon/10"></div>
+  <div class="absolute bottom-8 -left-6 h-16 w-16 rounded-full bg-maroon/10"></div>
+  
+  <div class="max-w-6xl mx-auto px-4 py-16 md:py-20 relative z-10">
+    <div class="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
+      <!-- Information Panel -->
+      <div class="reveal order-2 md:order-1">
+        <h2 class="text-3xl md:text-4xl font-bold text-maroon mb-4">Visit Our Clinic</h2>
+        <p class="text-lg text-maroon/80 mb-6">We're conveniently located in the heart of the city with ample parking and easy access to public transportation.</p>
+        
+        <div class="space-y-4 mb-8">
+          <div class="flex items-start">
+            <div class="bg-maroon/10 p-2 rounded-lg mr-4">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-maroon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+              </svg>
+            </div>
+            <div>
+              <h3 class="font-semibold text-maroon">Address</h3>
+              <p class="text-maroon/80">123 Skin Care Avenue<br>Beauty District, Mumbai 400001</p>
+            </div>
+          </div>
+          
+          <div class="flex items-start">
+            <div class="bg-maroon/10 p-2 rounded-lg mr-4">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-maroon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </div>
+            <div>
+              <h3 class="font-semibold text-maroon">Hours</h3>
+              <p class="text-maroon/80">Mon-Fri: 9:00 AM - 6:00 PM<br>Sat: 10:00 AM - 4:00 PM<br>Sun: Closed</p>
+            </div>
+          </div>
+          
+          <div class="flex items-start">
+            <div class="bg-maroon/10 p-2 rounded-lg mr-4">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-maroon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+              </svg>
+            </div>
+            <div>
+              <h3 class="font-semibold text-maroon">Contact</h3>
+              <p class="text-maroon/80">Phone: +91 98765 43210<br>Email: care@skincareclinic.example</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a href="https://maps.google.com/?q=123+Skin+Care+Avenue+Beauty+District+Mumbai+400001" 
+             target="_blank" 
+             class="flex items-center justify-center gap-2 bg-maroon text-cream px-6 py-3 rounded-lg hover:bg-maroon/90 transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
+            </svg>
+            Get Directions
+          </a>
+          
+          <a href="tel:+919876543210" 
+             class="flex items-center justify-center gap-2 border border-maroon text-maroon px-6 py-3 rounded-lg hover:bg-maroon/5 transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+            </svg>
+            Call Now
+          </a>
+        </div>
+      </div>
+      
+      <!-- Map Container -->
+      <div class="reveal order-1 md:order-2 rounded-xl overflow-hidden shadow-lg border-4 border-white">
+        <div class="relative">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3805.839327211002!2d78.49137290998829!3d17.467402700427467!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb9a66ec089bf1%3A0x8f338e5b81c06b79!2sNational%20Skin%20Centre%20Secunderabad!5e0!3m2!1sen!2sin!4v1756957959808!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          
+          <!-- Map Overlay Instructions -->
+          <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-lg shadow-md">
+            <p class="text-xs text-maroon flex items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+              </svg>
+              Tap for interactive directions
+            </p>
+          </div>
+        </div>
+        
+        <!-- Transportation Options -->
+        <div class="bg-white p-4">
+          <h3 class="font-medium text-maroon mb-2">Getting Here</h3>
+          <div class="flex flex-wrap gap-3">
+            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-maroon/10 text-maroon">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+              </svg>
+              Metro: 0.2km
+            </span>
+            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-maroon/10 text-maroon">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+              </svg>
+              Bus: 150m
+            </span>
+            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-maroon/10 text-maroon">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+              </svg>
+              Parking Available
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+  </main>
+
+  <footer class="bg-maroon text-cream">
+    <div class="max-w-6xl mx-auto px-4 py-12">
+      <!-- Main Footer Content -->
+      <div class="grid md:grid-cols-4 gap-8">
+        <!-- Logo & Intro -->
+        <div class="md:col-span-1">
+          <div class="flex items-center gap-3 mb-4">
+            <span
+              class="inline-flex h-10 w-10 items-center justify-center rounded-full bg-cream text-maroon font-bold text-lg">SC</span>
+            <span class="text-xl font-bold">Skincare Clinic</span>
+          </div>
+          <p class="text-sm leading-relaxed opacity-90 mb-6">
+            Evidence-based treatments for healthy, confident skin. Our certified dermatologists provide personalized
+            care using cutting-edge technology.
+          </p>
+
+          <!-- Trust Indicators -->
+          <div class="flex items-center gap-4 mb-6">
+            <div class="flex items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gold" viewBox="0 0 20 20" fill="currentColor">
+                <path
+                  d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+              </svg>
+              <span class="ml-1 text-sm">4.9/5 (238 reviews)</span>
+            </div>
+          </div>
+
+          <!-- Social Media -->
+          <div class="flex gap-4">
+            <a href="https://facebook.com" target="_blank" aria-label="Facebook"
+              class="h-10 w-10 rounded-full bg-cream/10 flex items-center justify-center hover:bg-cream/20 transition-colors">
+              <i class="fa-brands fa-facebook-f text-cream"></i>
+            </a>
+            <a href="https://instagram.com" target="_blank" aria-label="Instagram"
+              class="h-10 w-10 rounded-full bg-cream/10 flex items-center justify-center hover:bg-cream/20 transition-colors">
+              <i class="fa-brands fa-instagram text-cream"></i>
+            </a>
+            <a href="https://twitter.com" target="_blank" aria-label="Twitter"
+              class="h-10 w-10 rounded-full bg-cream/10 flex items-center justify-center hover:bg-cream/20 transition-colors">
+              <i class="fa-brands fa-x-twitter text-cream"></i>
+            </a>
+            <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn"
+              class="h-10 w-10 rounded-full bg-cream/10 flex items-center justify-center hover:bg-cream/20 transition-colors">
+              <i class="fa-brands fa-linkedin-in text-cream"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Quick Links -->
+        <nav aria-label="Footer" class="md:col-span-1">
+          <p class="font-semibold text-lg mb-4">Quick Links</p>
+          <div class="grid grid-cols-1 gap-3">
+            <a href="#hero" class="flex items-center group py-2">
+              <span class="w-1.5 h-1.5 rounded-full bg-cream/50 mr-3 group-hover:bg-cream transition-colors"></span>
+              <span class="group-hover:text-sand transition-colors">Home</span>
+            </a>
+            <a href="#about" class="flex items-center group py-2">
+              <span class="w-1.5 h-1.5 rounded-full bg-cream/50 mr-3 group-hover:bg-cream transition-colors"></span>
+              <span class="group-hover:text-sand transition-colors">About Us</span>
+            </a>
+            <a href="#services" class="flex items-center group py-2">
+              <span class="w-1.5 h-1.5 rounded-full bg-cream/50 mr-3 group-hover:bg-cream transition-colors"></span>
+              <span class="group-hover:text-sand transition-colors">Services & Treatments</span>
+            </a>
+            <a href="#why-us" class="flex items-center group py-2">
+              <span class="w-1.5 h-1.5 rounded-full bg-cream/50 mr-3 group-hover:bg-cream transition-colors"></span>
+              <span class="group-hover:text-sand transition-colors">Why Choose Us</span>
+            </a>
+            <a href="#testimonials" class="flex items-center group py-2">
+              <span class="w-1.5 h-1.5 rounded-full bg-cream/50 mr-3 group-hover:bg-cream transition-colors"></span>
+              <span class="group-hover:text-sand transition-colors">Patient Stories</span>
+            </a>
+          </div>
+        </nav>
+
+        <!-- Services -->
+        <div class="md:col-span-1">
+          <p class="font-semibold text-lg mb-4">Our Services</p>
+          <ul class="space-y-3">
+            <li class="flex items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-cream mr-2" viewBox="0 0 20 20"
+                fill="currentColor">
+                <path fill-rule="evenodd"
+                  d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                  clip-rule="evenodd" />
+              </svg>
+              <span class="text-sm">Acne Treatments</span>
+            </li>
+            <li class="flex items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-cream mr-2" viewBox="0 0 20 20"
+                fill="currentColor">
+                <path fill-rule="evenodd"
+                  d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                  clip-rule="evenodd" />
+              </svg>
+              <span class="text-sm">Laser Therapy</span>
+            </li>
+            <li class="flex items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-cream mr-2" viewBox="0 0 20 20"
+                fill="currentColor">
+                <path fill-rule="evenodd"
+                  d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                  clip-rule="evenodd" />
+              </svg>
+              <span class="text-sm">Chemical Peels</span>
+            </li>
+            <li class="flex items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-cream mr-2" viewBox="0 0 20 20"
+                fill="currentColor">
+                <path fill-rule="evenodd"
+                  d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                  clip-rule="evenodd" />
+              </svg>
+              <span class="text-sm">Anti-Aging Solutions</span>
+            </li>
+            <li class="flex items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-cream mr-2" viewBox="0 0 20 20"
+                fill="currentColor">
+                <path fill-rule="evenodd"
+                  d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                  clip-rule="evenodd" />
+              </svg>
+              <span class="text-sm">Skincare Products</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Contact Info -->
+       <div class="md:col-span-1">
+  <p class="font-semibold text-lg mb-4">Contact Us</p>
+  <div class="space-y-4">
+    <!-- Address -->
+    <div class="flex items-start">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-cream mr-3 mt-0.5" fill="none"
+        viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+          d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+          d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+      </svg>
+      <span class="text-sm">123 Skin Care Avenue<br>Beauty District, Mumbai 400001</span>
+    </div>
+
+    <!-- Phone -->
+    <div class="flex items-center">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-cream mr-3" fill="none" viewBox="0 0 24 24"
+        stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+          d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+      </svg>
+      <a href="tel:+919912985875" class="text-sm hover:text-sand transition-colors">+91 99129 85875</a>
+    </div>
+
+    <!-- Email -->
+    <div class="flex items-center">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-cream mr-3" fill="none" viewBox="0 0 24 24"
+        stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+          d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+      </svg>
+      <a href="mailto:info@nationalskincentre.in"
+        class="text-sm hover:text-sand transition-colors">info@nationalskincentre.in</a>
+    </div>
+
+    <!-- Opening Hours -->
+    <div class="pt-2">
+      <p class="text-sm font-medium mb-2">Opening Hours:</p>
+      <p class="text-sm">Mon-Fri: 9:00 AM - 6:00 PM</p>
+      <p class="text-sm">Sat: 10:00 AM - 4:00 PM</p>
+      <p class="text-sm">Sun: Closed</p>
+    </div>
+  </div>
+
+  <!-- Button -->
+  <a href="#contact"
+    class="mt-6 inline-flex items-center px-5 py-3 rounded-lg bg-cream text-maroon font-medium hover:bg-sand transition-colors group">
+    Book Consultation
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-2 group-hover:translate-x-1 transition-transform"
+      fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+    </svg>
+  </a>
+</div>
+
+      </div>
+
+      <!-- Bottom Section -->
+      <div class="mt-12 border-t border-cream/30 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
+        <div class="flex flex-col md:flex-row items-center gap-6">
+          <p class="text-xs">&copy; <span id="year"></span> Skincare Clinic. All rights reserved.</p>
+          <div class="flex items-center gap-6 text-xs">
+            <a href="#" class="hover:text-sand transition-colors">Privacy Policy</a>
+            <a href="#" class="hover:text-sand transition-colors">Terms of Service</a>
+            <a href="#" class="hover:text-sand transition-colors">Cookie Policy</a>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-4">
+          <button id="backToTop"
+            class="flex items-center px-4 py-2 rounded-md bg-cream/10 text-cream hover:bg-cream/20 transition-colors group">
+            Back to Top
+            <svg xmlns="http://www.w3.org/2000/svg"
+              class="h-4 w-4 ml-2 group-hover:-translate-y-0.5 transition-transform" fill="none" viewBox="0 0 24 24"
+              stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Set current year in copyright
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Back to top functionality
+    document.getElementById('backToTop').addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
+
+  <a href="#contact"
+    class="fixed right-4 bottom-4 inline-flex items-center px-4 py-2 rounded-full bg-maroon text-cream hover:bg-clay transition-colors shadow-none border border-clay focus-visible:ring-2 ring-offset-2 ring-offset-[var(--color-cream)] ring-[var(--color-clay)]">
+    Book Now
+  </a>
+
+  <div id="modal-acne" class="modal hidden fixed inset-0 z-50 items-center justify-center p-4">
+    <div class="fixed inset-0 bg-maroon/30"></div>
+    <div class="relative z-10 max-w-lg w-full rounded-lg border border-clay bg-cream p-6">
+      <div class="flex items-center justify-between">
+        <h3 class="text-xl font-semibold">Acne Scan</h3>
+        <button
+          class="modal-close h-8 w-8 inline-flex items-center justify-center rounded-md border border-clay text-maroon hover:bg-sand"
+          aria-label="Close">
+          ×
+        </button>
+      </div>
+      <p class="mt-3 text-sm leading-relaxed">
+        We assess acne severity using digital imaging to create a targeted treatment plan. Options may include topicals,
+        peels, and light therapy.
+      </p>
+    </div>
+  </div>
+
+  <div id="modal-laser" class="modal hidden fixed inset-0 z-50 items-center justify-center p-4">
+    <div class="fixed inset-0 bg-maroon/30"></div>
+    <div class="relative z-10 max-w-lg w-full rounded-lg border border-clay bg-cream p-6">
+      <div class="flex items-center justify-between">
+        <h3 class="text-xl font-semibold">Laser Hair Removal</h3>
+        <button
+          class="modal-close h-8 w-8 inline-flex items-center justify-center rounded-md border border-clay text-maroon hover:bg-sand"
+          aria-label="Close">
+          ×
+        </button>
+      </div>
+      <p class="mt-3 text-sm leading-relaxed">
+        Reduce hair growth safely and effectively. Multiple sessions ensure long-term results with minimal downtime.
+      </p>
+    </div>
+  </div>
+
+  <div id="modal-hair" class="modal hidden fixed inset-0 z-50 items-center justify-center p-4">
+    <div class="fixed inset-0 bg-maroon/30"></div>
+    <div class="relative z-10 max-w-lg w-full rounded-lg border border-clay bg-cream p-6">
+      <div class="flex items-center justify-between">
+        <h3 class="text-xl font-semibold">Hair Fall</h3>
+        <button
+          class="modal-close h-8 w-8 inline-flex items-center justify-center rounded-md border border-clay text-maroon hover:bg-sand"
+          aria-label="Close">
+          ×
+        </button>
+      </div>
+      <p class="mt-3 text-sm leading-relaxed">
+        We examine scalp health and offer options such as mesotherapy, PRP, and lifestyle guidance to reduce shedding.
+      </p>
+    </div>
+  </div>
+
+  <div id="modal-warts" class="modal hidden fixed inset-0 z-50 items-center justify-center p-4">
+    <div class="fixed inset-0 bg-maroon/30"></div>
+    <div class="relative z-10 max-w-lg w-full rounded-lg border border-clay bg-cream p-6">
+      <div class="flex items-center justify-between">
+        <h3 class="text-xl font-semibold">Warts & Moles Removal</h3>
+        <button
+          class="modal-close h-8 w-8 inline-flex items-center justify-center rounded-md border border-clay text-maroon hover:bg-sand"
+          aria-label="Close">
+          ×
+        </button>
+      </div>
+      <p class="mt-3 text-sm leading-relaxed">
+        Quick, precise procedures with minimal scarring, followed by aftercare guidance for optimal healing.
+      </p>
+    </div>
+  </div>
+
+  <div id="modal-lightening" class="modal hidden fixed inset-0 z-50 items-center justify-center p-4">
+    <div class="fixed inset-0 bg-maroon/30"></div>
+    <div class="relative z-10 max-w-lg w-full rounded-lg border border-clay bg-cream p-6">
+      <div class="flex items-center justify-between">
+        <h3 class="text-xl font-semibold">Skin Lightening</h3>
+        <button
+          class="modal-close h-8 w-8 inline-flex items-center justify-center rounded-md border border-clay text-maroon hover:bg-sand"
+          aria-label="Close">
+          ×
+        </button>
+      </div>
+      <p class="mt-3 text-sm leading-relaxed">
+        Treatments that aim to reduce hyperpigmentation and enhance overall radiance, tailored to your skin type.
+      </p>
+    </div>
+  </div>
+
+  <div id="modal-chin" class="modal hidden fixed inset-0 z-50 items-center justify-center p-4">
+    <div class="fixed inset-0 bg-maroon/30"></div>
+    <div class="relative z-10 max-w-lg w-full rounded-lg border border-clay bg-cream p-6">
+      <div class="flex items-center justify-between">
+        <h3 class="text-xl font-semibold">Double Chin Treatments</h3>
+        <button
+          class="modal-close h-8 w-8 inline-flex items-center justify-center rounded-md border border-clay text-maroon hover:bg-sand"
+          aria-label="Close">
+          ×
+        </button>
+      </div>
+      <p class="mt-3 text-sm leading-relaxed">
+        Non-surgical options to reduce submental fat and improve jawline definition with minimal downtime.
+      </p>
+    </div>
+  </div>
+
+  <script>
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Mobile menu toggle
+    const mobileBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    mobileBtn?.addEventListener('click', () => {
+      const isOpen = !mobileMenu.classList.contains('hidden');
+      mobileMenu.classList.toggle('hidden');
+      mobileBtn.setAttribute('aria-expanded', String(!isOpen));
+    });
+
+    // Smooth scroll handled via CSS scroll-smooth + scroll-margin-top on sections
+
+    // Scrollspy
+    const navLinks = Array.from(document.querySelectorAll('header nav a[href^="#"]'));
+    const sections = navLinks.map(link => document.querySelector(link.getAttribute('href')));
+    const setActive = (id) => {
+      navLinks.forEach(link => {
+        const active = link.getAttribute('href') === '#' + id;
+        link.classList.toggle('text-clay', active);
+      });
+    };
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) setActive(entry.target.id);
+      });
+    }, { rootMargin: '-40% 0px -50% 0px', threshold: 0.1 });
+    sections.forEach(sec => sec && observer.observe(sec));
+
+    // Reveal on scroll
+    const revealEls = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    revealEls.forEach(el => revealObserver.observe(el));
+
+    // Back to Top
+    const backToTop = document.getElementById('backToTop');
+    const onScroll = () => {
+      if (window.scrollY > 600) {
+        backToTop?.classList.remove('hidden');
+      } else {
+        backToTop?.classList.add('hidden');
+      }
+    };
+    backToTop?.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+    window.addEventListener('scroll', onScroll);
+    onScroll();
+
+    // Modals
+    const openButtons = document.querySelectorAll('[data-modal]');
+    const modals = document.querySelectorAll('.modal');
+    const closeModal = (modal) => {
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    };
+    openButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const id = btn.getAttribute('data-modal');
+        const modal = document.getElementById(id);
+        if (!modal) return;
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+        // Click outside to close
+        modal.addEventListener('click', (e) => {
+          if (e.target === modal) closeModal(modal);
+        }, { once: true });
+        modal.querySelectorAll('.modal-close').forEach(x => x.addEventListener('click', () => closeModal(modal), { once: true }));
+        document.addEventListener('keydown', function esc(e) {
+          if (e.key === 'Escape') {
+            closeModal(modal);
+            document.removeEventListener('keydown', esc);
+          }
+        });
+      });
+    });
+
+    // Form validation
+    const form = document.getElementById('contactForm');
+    const success = document.getElementById('formSuccess');
+    const showError = (name, message) => {
+      const p = form.querySelector('[data-error-for="' + name + '"]');
+      if (p) {
+        p.textContent = message;
+        p.classList.remove('hidden');
+      }
+    };
+    const hideErrors = () => {
+      form.querySelectorAll('[data-error-for]').forEach(p => p.classList.add('hidden'));
+    };
+    form?.addEventListener('submit', (e) => {
+      e.preventDefault();
+      hideErrors();
+      let valid = true;
+      const name = form.name.value.trim();
+      const phone = form.phone.value.trim();
+      const email = form.email.value.trim();
+      const service = form.service.value.trim();
+      const message = form.message.value.trim();
+      const consent = form.consent.checked;
+
+      if (!name) { showError('name', 'Please enter your name.'); valid = false; }
+      if (!phone || phone.length < 8) { showError('phone', 'Please enter a valid phone.'); valid = false; }
+      if (email && !/^\S+@\S+\.\S+$/.test(email)) { showError('email', 'Please enter a valid email.'); valid = false; }
+      if (!service) { showError('service', 'Please select a service.'); valid = false; }
+      if (!message) { showError('message', 'Please enter a message.'); valid = false; }
+      if (!consent) { valid = false; alert('Please agree to be contacted.'); }
+
+      if (valid) {
+        form.reset();
+        success.classList.remove('hidden');
+        setTimeout(() => success.classList.add('hidden'), 4000);
+      }
+    });
+  </script>
+</body>
+
+</html>
